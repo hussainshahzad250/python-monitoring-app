@@ -144,6 +144,11 @@ Create an EKS cluster and add node group
 
 Create a node group in the EKS cluster.
 
+### Set the cluster context:
+```
+aws eks update-kubeconfig --name <cluster_name> --region <aws_region>
+```
+
 ### **Step 3: Create deployment and service**
 
 ```jsx
