@@ -35,11 +35,13 @@
 Clone the code from the repository:
 
 ```
-git clone <repository_url>
+git clone https://github.com/hussainshahzad250/python-monitoring-app.git
 ```
 
-### **Step 2: Install dependencies**
-
+### **Step 2: go inside project and install dependencies**
+```
+cd python-monitoring-app
+```
 The application uses the **`psutil`** and **`Flask`, Plotly, boto3** libraries. Install them using pip:
 
 ```
@@ -92,7 +94,7 @@ CMD ["flask", "run"]
 To build the Docker image, execute the following command:
 
 ```
-docker build -t <image_name> .
+docker build -t python-monitoring-app .
 ```
 
 ### **Step 3: Run the Docker container**
@@ -100,7 +102,7 @@ docker build -t <image_name> .
 To run the Docker container, execute the following command:
 
 ```
-docker run -p 5000:5000 <image_name>
+docker run -p 5000:5000 python-monitoring-app
 ```
 
 This will start the Flask server in a Docker container on **`localhost:5000`**. Navigate to [http://localhost:5000/](http://localhost:5000/) on your browser to access the application.
