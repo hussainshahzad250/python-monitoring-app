@@ -234,3 +234,11 @@ Once your pod is up and running, run the port-forward to expose the service
 ```bash
 kubectl port-forward service/<service_name> 5000:5000
 ```
+
+# Destroying the Infrastructure
+    To clean up the infrastructure, follow these steps:
+
+1. Delete the Node Group: Delete the node group associated with your EKS cluster.
+2. Delete the EKS Cluster: Once the nodes are deleted, you can proceed to delete the EKS cluster itself.
+
+
