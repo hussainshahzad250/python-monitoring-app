@@ -35,11 +35,13 @@
 Clone the code from the repository:
 
 ```
-git clone <repository_url>
+git clone https://github.com/hussainshahzad250/python-monitoring-app.git
 ```
 
-### **Step 2: Install dependencies**
-
+### **Step 2: go inside project and install dependencies**
+```
+cd python-monitoring-app
+```
 The application uses the **`psutil`** and **`Flask`, Plotly, boto3** libraries. Install them using pip:
 
 ```
@@ -101,11 +103,13 @@ docker build -t python_monitoring_app .
 ```
 
 ```
-docker tag python_monitoring_app:latest 480291082518.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
+docker tag python_monitoring_app:latest 1234567890.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
 ```
 
 ```
-docker push 480291082518.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
+docker push 1234567890.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
+=======
+docker build -t python-monitoring-app .
 ```
 
 ### **Step 3: Run the Docker container**
@@ -113,7 +117,7 @@ docker push 480291082518.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:
 To run the Docker container, execute the following command:
 
 ```
-docker run -p 5000:5000 <image_name>
+docker run -p 5000:5000 python-monitoring-app
 ```
 
 This will start the Flask server in a Docker container on **`localhost:5000`**. Navigate to [http://localhost:5000/](http://localhost:5000/) on your browser to access the application.
@@ -156,6 +160,11 @@ Create an EKS cluster and add node group
 ### **Step 2: Create a node group**
 
 Create a node group in the EKS cluster.
+
+### Set the cluster context:
+```
+aws eks update-kubeconfig --name <cluster_name> --region <aws_region>
+```
 
 ### **Step 3: Create deployment and service**
 
@@ -222,10 +231,19 @@ make sure to edit the name of the image on line 25 with your image Uri.
 - Once you run this file by running “python3 eks.py” deployment and service will be created.
 - Check by running following commands:
 
-```jsx
-kubectl get deployment -n default (check deployments)
-kubectl get service -n default (check service)
-kubectl get pods -n default (to check the pods)
+Check deployments
+```
+kubectl get deployment -n default
+```
+
+Check service
+```
+kubectl get service -n default
+```
+
+Check the pods
+```
+kubectl get pods -n default
 ```
 
 Once your pod is up and running, run the port-forward to expose the service
@@ -233,3 +251,11 @@ Once your pod is up and running, run the port-forward to expose the service
 ```bash
 kubectl port-forward service/<service_name> 5000:5000
 ```
+
+# Destroying the Infrastructure
+    To clean up the infrastructure, follow these steps:
+
+1. Delete the Node Group: Delete the node group associated with your EKS cluster.
+2. Delete the EKS Cluster: Once the nodes are deleted, you can proceed to delete the EKS cluster itself.
+
+
