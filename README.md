@@ -90,9 +90,22 @@ CMD ["flask", "run"]
 ### **Step 2: Build the Docker image**
 
 To build the Docker image, execute the following command:
+replace ``` 1234567890 ``` with your AWS accountId
 
 ```
-docker build -t <image_name> .
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 1234567890.dkr.ecr.ap-south-1.amazonaws.com
+```
+
+```
+docker build -t python_monitoring_app .
+```
+
+```
+docker tag python_monitoring_app:latest 480291082518.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
+```
+
+```
+docker push 480291082518.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
 ```
 
 ### **Step 3: Run the Docker container**
