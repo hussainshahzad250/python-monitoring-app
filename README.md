@@ -214,10 +214,19 @@ make sure to edit the name of the image on line 25 with your image Uri.
 - Once you run this file by running “python3 eks.py” deployment and service will be created.
 - Check by running following commands:
 
-```jsx
-kubectl get deployment -n default (check deployments)
-kubectl get service -n default (check service)
-kubectl get pods -n default (to check the pods)
+Check deployments
+```
+kubectl get deployment -n default
+```
+
+Check service
+```
+kubectl get service -n default
+```
+
+Check the pods
+```
+kubectl get pods -n default
 ```
 
 Once your pod is up and running, run the port-forward to expose the service
