@@ -108,8 +108,6 @@ docker tag python_monitoring_app:latest 1234567890.dkr.ecr.ap-south-1.amazonaws.
 
 ```
 docker push 1234567890.dkr.ecr.ap-south-1.amazonaws.com/python_monitoring_app:latest
-=======
-docker build -t python-monitoring-app .
 ```
 
 ### **Step 3: Run the Docker container**
